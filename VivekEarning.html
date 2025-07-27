@@ -3,157 +3,360 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Earning opportunities by Vivek - Connect with admins for business inquiries">
   <title>Earning By Vivek</title>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@400;600&display=swap');
+
     body {
       margin: 0;
       padding: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-family: 'Poppins', sans-serif;
       background: linear-gradient(rgba(0, 0, 50, 0.6), rgba(0, 0, 50, 0.6)), url('https://wallpaperaccess.com/full/5651981.jpg');
       background-size: cover;
       background-attachment: fixed;
       color: white;
+      min-height: 100vh;
     }
+
     header {
       display: flex;
       align-items: center;
       padding: 1rem;
-      background: rgba(0, 0, 0, 0.5);
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(5px);
     }
+
     header img {
       width: 50px;
       height: 50px;
       border-radius: 50%;
       margin-right: 1rem;
+      border: 2px solid #ffcc00;
     }
+
     header h1 {
-      font-size: 2rem;
+      font-size: 1.8rem;
       color: #ffcc00;
       font-family: 'Pacifico', cursive;
+      margin: 0;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
     }
+
     section {
       padding: 2rem;
+      max-width: 800px;
+      margin: 0 auto;
     }
+
     .note {
       background-color: rgba(255, 255, 255, 0.15);
       padding: 1rem;
       border-radius: 10px;
       margin-bottom: 1.5rem;
       box-shadow: 0 0 10px rgba(0,0,0,0.3);
+      border-left: 4px solid #ffcc00;
     }
+
     .card {
       background: rgba(255, 255, 255, 0.1);
       border-radius: 12px;
       padding: 1.5rem;
-      margin: 1rem 0;
+      margin: 1.5rem 0;
       backdrop-filter: blur(5px);
       box-shadow: 0 0 10px rgba(0,0,0,0.4);
+      border: 1px solid rgba(255,255,255,0.2);
     }
+
+    h2 {
+      margin-top: 0;
+      color: #00ccff;
+      display: flex;
+      align-items: center;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+    }
+
     input, textarea, select {
       width: 100%;
-      padding: 0.5rem;
-      border-radius: 6px;
-      border: none;
+      padding: 0.75rem;
+      border-radius: 8px;
+      border: 1px solid rgba(255,255,255,0.3);
       margin-top: 0.5rem;
+      background: rgba(0,0,0,0.3);
+      color: white;
+      font-family: inherit;
+      transition: all 0.3s ease;
     }
+
+    input:focus, textarea:focus, select:focus {
+      outline: none;
+      border-color: #00ccff;
+      box-shadow: 0 0 0 2px rgba(0,204,255,0.3);
+    }
+
     button {
-      padding: 0.5rem 1rem;
+      padding: 0.75rem 1.5rem;
       margin-top: 1rem;
       background: #00ccff;
       color: white;
       border: none;
-      border-radius: 6px;
+      border-radius: 8px;
       cursor: pointer;
+      transition: all 0.3s ease;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
     }
+
+    button:hover {
+      background: #0099cc;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
     a {
       color: #00ccff;
       text-decoration: none;
+      transition: all 0.2s ease;
     }
+
+    a:hover {
+      text-decoration: underline;
+      color: #00a3cc;
+    }
+
     footer {
       text-align: center;
-      padding: 1rem;
-      background: rgba(0, 0, 0, 0.5);
+      padding: 1.5rem;
+      background: rgba(0, 0, 0, 0.7);
       margin-top: 2rem;
+      backdrop-filter: blur(5px);
+      font-size: 0.9rem;
+    }
+
+    .icon {
+      width: 24px;
+      height: 24px;
+      margin-right: 10px;
+      vertical-align: middle;
+    }
+
+    .form-toggle {
+      display: flex;
+      margin-bottom: 1rem;
+      border-bottom: 1px solid rgba(255,255,255,0.2);
+    }
+
+    .form-toggle button {
+      background: none;
+      border: none;
+      color: white;
+      padding: 0.5rem 1rem;
+      margin: 0;
+      border-radius: 0;
+      position: relative;
+    }
+
+    .form-toggle button.active {
+      color: #00ccff;
+    }
+
+    .form-toggle button.active::after {
+      content: '';
+      position: absolute;
+      bottom: -1px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: #00ccff;
+    }
+
+    .form-container {
+      display: none;
+    }
+
+    .form-container.active {
+      display: block;
+    }
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 1.5rem;
+      }
+      
+      section {
+        padding: 1rem;
+      }
+      
+      .card {
+        padding: 1rem;
+      }
     }
   </style>
-  <script>
-    function showTelegramPopup() {
-      const popup = document.createElement('div');
-      popup.innerHTML = `
-        <div style="
-          position: fixed;
-          top: 0; left: 0;
-          width: 100%; height: 100%;
-          background-color: rgba(0,0,0,0.6);
-          display: flex; align-items: center; justify-content: center;
-          z-index: 1000;
-        ">
-          <div style="
-            background: white;
-            color: black;
-            padding: 2rem;
-            border-radius: 10px;
-            max-width: 90%;
-            width: 300px;
-            text-align: center;
-            box-shadow: 0 0 15px rgba(0,0,0,0.5);
-          ">
-            <h3>📢 Join Telegram Group</h3>
-            <p>You're about to visit our Telegram group for the latest updates. Continue?</p>
-            <button onclick="window.open('https://t.me/EarnByvbVivek', '_blank'); this.parentElement.parentElement.remove();" style="
-              background: #00ccff;
-              color: white;
-              border: none;
-              border-radius: 5px;
-              padding: 0.5rem 1rem;
-              margin-top: 1rem;
-              cursor: pointer;
-            ">Yes, Take Me There</button>
-            <br/>
-            <button onclick="this.parentElement.parentElement.remove();" style="
-              background: #ccc;
-              color: black;
-              border: none;
-              border-radius: 5px;
-              padding: 0.4rem 1rem;
-              margin-top: 0.5rem;
-              cursor: pointer;
-            ">Cancel</button>
-          </div>
-        </div>
-      `;
-      document.body.appendChild(popup);
-    }
-  </script>
 </head>
+
 <body>
   <header>
-    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Blue_circle_logo.svg/1024px-Blue_circle_logo.svg.png" alt="EBV Logo" />
+    <img src="https://i.imgur.com/XYZ1234.png" alt="Earning By Vivek Logo" />
     <h1>Earning By Vivek</h1>
   </header>
 
   <section>
     <div class="note">
-      <p>💡 If you connect with me, you will definitely earn higher.</p>
-      <p>⏳ Please keep waiting for Admin's App Link.</p>
+      <p>💡 Connect with us for business and earning opportunities.</p>
+      <p>⏳ Coming soon: Official mobile application.</p>
     </div>
 
     <div class="card">
-      <h2>⏰ Latest Updates by Admin</h2>
-      <textarea disabled style="background: transparent; color: white; font-size: 1rem; margin-bottom: 0;">
-Join our Telegram Channel for the latest updates and opportunities shared by Admins.
-      </textarea>
-      <p style="margin-top: 1rem;">
-        <a href="#" onclick="showTelegramPopup()" style="color: #00ccff; font-weight: bold; font-size: 1rem;">
-          ➤ Click For New Update
-        </a>
-      </p>
+      <h2>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" class="icon">
+        Chat With Admin
+      </h2>
+
+      <label for="adminSelect">Select Admin to Chat:</label>
+      <select id="adminSelect">
+        <option value="">-- Choose Admin --</option>
+        <option value="917860068486">Vivek (Primary Admin)</option>
+        <option value="918953199515">Satya (Support Admin)</option>
+      </select>
+
+      <button onclick="chatWithAdmin()">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" class="icon">
+        Chat on WhatsApp
+      </button>
+    </div>
+
+    <div class="card">
+      <h2>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" alt="Telegram" class="icon">
+        Telegram Contact
+      </h2>
+      <p>For general inquiries: <a href="https://t.me/vivekawasthi9198" target="_blank" rel="noopener noreferrer">@vivekawasthi9198</a></p>
+    </div>
+
+    <div class="card">
+      <h2>📝 Complaint Form</h2>
+      <textarea id="complaintBox" placeholder="Please describe your issue in detail..." rows="5"></textarea>
+      <button onclick="submitComplaint()">Submit Complaint</button>
+      <p style="font-size: 0.8rem; margin-top: 0.5rem;">We'll respond within 24-48 hours.</p>
+    </div>
+
+    <div class="card">
+      <h2>📢 Requests</h2>
+      
+      <div class="form-toggle">
+        <button class="active" onclick="toggleForm('adForm')">Advertisement</button>
+        <button onclick="toggleForm('columnForm')">Column</button>
+      </div>
+      
+      <div id="adForm" class="form-container active">
+        <p>For business promotion inquiries:</p>
+        <textarea id="adMessage" placeholder="Include: Your business details, target audience, budget..." rows="5"></textarea>
+        <button onclick="sendAdRequest()">Request Advertisement</button>
+      </div>
+      
+      <div id="columnForm" class="form-container">
+        <p>Request a specific column/article to be featured:</p>
+        <textarea id="columnRequest" placeholder="Describe the column/article you'd like us to feature..." rows="5"></textarea>
+        <button onclick="sendColumnRequest()">Send Column Request</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>⏰ Latest Updates</h2>
+      <div style="background: rgba(0,0,0,0.2); padding: 1rem; border-radius: 8px; margin-bottom: 1rem;">
+        <p>Join our Telegram Channel for the latest updates and opportunities:</p>
+        <ul>
+          <li>New earning methods added weekly</li>
+          <li>Exclusive offers for members</li>
+          <li>App launch notifications</li>
+        </ul>
+      </div>
+      <button onclick="window.open('https://t.me/+9ydAVFSz8-JmNTA1', '_blank')">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" class="icon">
+        Join Telegram Channel
+      </button>
     </div>
   </section>
 
   <footer>
-    © 2025 Earning By Vivek — Powered by Admins Vivek & Satya
+    <p>© 2023 Earning By Vivek. All rights reserved.</p>
+    <p>Contact: vivekawasthi9198@gmail.com | Powered by Admins Vivek & Satya</p>
+    <p style="font-size: 0.8rem; opacity: 0.8;">Disclaimer: Earnings may vary based on individual effort.</p>
   </footer>
+
+  <script>
+    function openWhatsApp(number) {
+      const message = prompt("Enter your message:");
+      if (message) {
+        const encodedMessage = encodeURIComponent(message);
+        window.open(`https://wa.me/${number}?text=${encodedMessage}`, '_blank');
+      }
+    }
+
+    function sendAdRequest() {
+      const message = document.getElementById('adMessage').value.trim();
+      if (message === '') {
+        alert("Please enter your advertisement details before submitting.");
+        return;
+      }
+      const encodedMessage = encodeURIComponent("Advertisement Request:\n" + message);
+      window.open(`https://t.me/vivekawasthi9198?text=${encodedMessage}`, '_blank');
+      document.getElementById('adMessage').value = '';
+    }
+
+    function chatWithAdmin() {
+      const selectedNumber = document.getElementById('adminSelect').value;
+      if (selectedNumber) {
+        window.open(`https://wa.me/${selectedNumber}`, '_blank');
+      } else {
+        alert("Please select an admin to chat with.");
+      }
+    }
+
+    function submitComplaint() {
+      const complaint = document.getElementById('complaintBox').value.trim();
+      if (complaint === "") {
+        alert("Please describe your complaint before submitting.");
+        return;
+      }
+      const encodedComplaint = encodeURIComponent("Complaint:\n" + complaint);
+      window.open(`https://t.me/vivekawasthi9198?text=${encodedComplaint}`, '_blank');
+      document.getElementById('complaintBox').value = "";
+    }
+
+    function sendColumnRequest() {
+      const request = document.getElementById('columnRequest').value.trim();
+      if (request === "") {
+        alert("Please describe your column request before submitting.");
+        return;
+      }
+      const encodedRequest = encodeURIComponent("Column Request:\n" + request);
+      window.open(`https://t.me/vivekawasthi9198?text=${encodedRequest}`, '_blank');
+      document.getElementById('columnRequest').value = "";
+    }
+
+    function toggleForm(formId) {
+      // Hide all form containers
+      document.querySelectorAll('.form-container').forEach(form => {
+        form.classList.remove('active');
+      });
+      
+      // Show selected form
+      document.getElementById(formId).classList.add('active');
+      
+      // Update active tab
+      document.querySelectorAll('.form-toggle button').forEach(btn => {
+        btn.classList.remove('active');
+      });
+      event.target.classList.add('active');
+    }
+  </script>
 </body>
 </html>
